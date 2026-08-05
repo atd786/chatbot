@@ -28,6 +28,26 @@ const About = () => {
                 Based on a global operational model, we serve clients across North America, Europe, and Asia. Our multilingual AI agents break down language barriers, allowing you to seamlessly acquire and support customers in new international markets.
               </p>
             </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '30px', marginTop: '60px' }}>
+              {[
+                { number: "50+", label: "Enterprise Clients" },
+                { number: "10M+", label: "Conversations Automated" },
+                { number: "24/7", label: "Global Availability" }
+              ].map((stat, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  style={{ background: 'var(--bg-secondary)', padding: '30px', borderRadius: '16px', border: '1px solid var(--border-color)' }}
+                >
+                  <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--accent-primary)', marginBottom: '10px' }}>{stat.number}</div>
+                  <div style={{ color: 'var(--text-secondary)', fontWeight: '600' }}>{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

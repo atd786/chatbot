@@ -94,6 +94,50 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className="section" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <h2 className="section-title">How It <span className="gradient-text">Works</span></h2>
+            <p className="section-subtitle">A seamless process from deployment to optimization.</p>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '30px' }}>
+            {[
+              { step: "01", title: "Integration", desc: "We connect our AI models directly to your CRM and website via secure APIs." },
+              { step: "02", title: "Custom Training", desc: "The bot ingests your company's FAQs, products, and support history." },
+              { step: "03", title: "Live Optimization", desc: "Our system continuously learns from live chats to improve response accuracy." }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.2 }}
+                style={{ 
+                  padding: '40px', 
+                  borderRadius: '24px', 
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--bg-secondary)',
+                  position: 'relative'
+                }}
+              >
+                <div style={{ fontSize: '3rem', fontWeight: '800', color: 'rgba(37, 99, 235, 0.1)', position: 'absolute', top: '20px', right: '30px' }}>
+                  {item.step}
+                </div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '15px', position: 'relative', zIndex: 1 }}>{item.title}</h3>
+                <p style={{ color: 'var(--text-secondary)', position: 'relative', zIndex: 1 }}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </motion.div>
   );
 };

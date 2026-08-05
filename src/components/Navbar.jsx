@@ -15,6 +15,7 @@ const Navbar = () => {
       <div className="nav-links">
         <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
         <Link to="/services" className={`nav-link ${isActive('/services')}`}>Services</Link>
+        <Link to="/portfolio" className={`nav-link ${isActive('/portfolio')}`}>Portfolio</Link>
         <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
         <Link to="/contact" className="btn btn-primary" style={{ padding: '10px 24px' }}>Get Started</Link>
       </div>
