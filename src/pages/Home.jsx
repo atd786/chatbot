@@ -33,11 +33,11 @@ const Home = () => {
               <div className="hero-badge">
                 <div className="hero-badge-dot"></div>
                 <Sparkles size={14} color="var(--accent-primary)" />
-                <span>Previous Gen AI Platform v2.0</span>
+                <span>Next-Gen AI Platform v2.0</span>
               </div>
 
               <h1 className="hero-title-responsive" style={{ fontSize: '4.2rem', fontWeight: '800', lineHeight: 1.1, marginBottom: '24px', letterSpacing: '-1.5px' }}>
-                Previous Gen AI <br/>
+                Next-Gen AI <br/>
                 <span className="gradient-text">Automation</span>
               </h1>
 
