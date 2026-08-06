@@ -35,7 +35,7 @@ function App() {
         </Routes>
       </AnimatePresence>
 
-      <LeadBot />
+      {location.pathname !== '/contact' && <LeadBot />}
       {!isAdminRoute && <Footer />}
     </>
   );
