@@ -859,7 +859,7 @@ textarea.form-input {
 }
 
 .bot-input-area.premium-input-area {
-  padding: 20px;
+  padding: 16px 20px;
   background: rgba(255,255,255,0.9);
   border-top: 1px solid rgba(0,0,0,0.05);
   gap: 10px;
@@ -1106,4 +1106,74 @@ textarea.form-input {
 @keyframes marqueeScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* --- ROI CALCULATOR STYLING --- */
+.roi-calculator-card {
+  background: white;
+  border-radius: 28px;
+  padding: 45px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.roi-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--bg-secondary);
+  outline: none;
+  accent-color: var(--accent-primary);
+  cursor: pointer;
+}
+
+.roi-stat-highlight {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 24px;
+  padding: 30px;
+  text-align: center;
+}
+
+.roi-val-large {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+/* --- QUICK ACTION CHIPS IN LEADBOT --- */
+.quick-chips-wrapper {
+  display: flex;
+  gap: 8px;
+  padding: 10px 15px;
+  overflow-x: auto;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  scrollbar-width: none;
+}
+.quick-chips-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-chip-btn {
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.quick-chip-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
 }
