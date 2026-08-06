@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Send, CheckCircle2 } from 'lucide-react';
+import { Bot } from 'lucide-react';
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
-  };
+  useEffect(() => {
+    // Automatically trigger the chatbot to open when user visits the Contact page
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event('open-chatbot'));
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const openGlobalBot = () => {
     window.dispatchEvent(new Event('open-chatbot'));
@@ -22,86 +24,52 @@ const Contact = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
     >
-      <section className="section" style={{ paddingBottom: '100px', paddingTop: '120px' }}>
+      <section className="section" style={{ paddingBottom: '100px', paddingTop: '120px', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
             
-            <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-              <h1 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '15px' }}>
-                Book a <span className="gradient-text">Consultation</span>
-              </h1>
-              <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
-                Fill out the form below to speak with our human team, or chat instantly with our AI expert.
-              </p>
-            </div>
-
-            <div className="glass-card" style={{ padding: '50px', position: 'relative', overflow: 'hidden' }}>
-              {submitted ? (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }} 
-                  animate={{ opacity: 1, scale: 1 }}
-                  style={{ textAlign: 'center', padding: '40px 0' }}
-                >
-                  <CheckCircle2 size={60} color="#10b981" style={{ margin: '0 auto 20px auto' }} />
-                  <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '10px' }}>Request Received!</h2>
-                  <p style={{ color: 'var(--text-secondary)' }}>We will be in touch shortly to schedule your consultation.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '25px' }}>
-                    <div>
-                      <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: 'var(--text-secondary)' }}>Full Name</label>
-                      <input type="text" required style={{ width: '100%', padding: '15px', borderRadius: '12px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', fontSize: '1rem' }} />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: 'var(--text-secondary)' }}>Work Email</label>
-                      <input type="email" required style={{ width: '100%', padding: '15px', borderRadius: '12px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', fontSize: '1rem' }} />
-                    </div>
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: 'var(--text-secondary)' }}>Company Name</label>
-                    <input type="text" style={{ width: '100%', padding: '15px', borderRadius: '12px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', fontSize: '1rem' }} />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: 'var(--text-secondary)' }}>How can we help you?</label>
-                    <textarea rows="4" required style={{ width: '100%', padding: '15px', borderRadius: '12px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', fontSize: '1rem', resize: 'vertical' }}></textarea>
-                  </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '18px', fontSize: '1.1rem', marginTop: '10px' }}>
-                    Submit Request <Send size={18} style={{ marginLeft: '10px' }}/>
-                  </button>
-                </form>
-              )}
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '40px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: 'center', marginBottom: '20px' }}>
-                <div style={{ height: '1px', background: 'var(--border-color)', flex: 1, maxWidth: '100px' }}></div>
-                <span style={{ color: 'var(--text-secondary)', fontWeight: '600', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>OR</span>
-                <div style={{ height: '1px', background: 'var(--border-color)', flex: 1, maxWidth: '100px' }}></div>
-              </div>
-              
-              <button onClick={openGlobalBot} className="btn" style={{ 
-                background: 'linear-gradient(135deg, #1e1e1e 0%, #000000 100%)', 
-                color: 'white',
-                border: 'none',
-                padding: '16px 32px',
-                borderRadius: '50px',
-                fontSize: '1.1rem',
-                fontWeight: '700',
-                display: 'inline-flex',
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <div style={{ 
+                width: '100px', 
+                height: '100px', 
+                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+                borderRadius: '50%',
+                display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
-                cursor: 'pointer',
-                transition: 'transform 0.2s'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-3px)'}
-              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                <Bot size={22} color="#fbbf24" />
-                Prefer to chat? Ask our AI
-              </button>
-            </div>
+                justifyContent: 'center',
+                margin: '0 auto 30px auto',
+                boxShadow: '0 20px 40px rgba(37, 99, 235, 0.3)'
+              }}>
+                <Bot size={50} color="white" />
+              </div>
+            </motion.div>
+
+            <h1 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '20px' }}>
+              Let's build your <span className="gradient-text">AI Future</span>
+            </h1>
+            <p style={{ fontSize: '1.3rem', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>
+              Traditional contact forms are a thing of the past. <br/>
+              Our AI Sales Engineer is ready to take your details and book your consultation instantly.
+            </p>
+
+            <button onClick={openGlobalBot} className="btn btn-primary" style={{ 
+              padding: '18px 40px',
+              borderRadius: '50px',
+              fontSize: '1.2rem',
+              fontWeight: '700',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              boxShadow: '0 15px 30px rgba(37, 99, 235, 0.3)',
+              cursor: 'pointer'
+            }}>
+              <Bot size={24} />
+              Chat with AI to Book
+            </button>
 
           </div>
         </div>
