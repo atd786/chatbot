@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import Pricing from './pages/Pricing';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import LeadBot from './components/LeadBot';
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
         </Routes>
       </AnimatePresence>
 
+      <LeadBot />
       {!isAdminRoute && <Footer />}
     </>
   );
