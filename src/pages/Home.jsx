@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Bot, Globe2, Zap, Sparkles, ShieldCheck, CheckCircle2, Building2, Stethoscope, ShoppingCart, Truck, Cpu } from 'lucide-react';
+import { ArrowRight, Bot, Globe2, Zap, Sparkles, ShieldCheck, CheckCircle2, Building2, Stethoscope, ShoppingCart, Truck, Cpu, Calculator, DollarSign, Clock } from 'lucide-react';
 
 const Home = () => {
+  const [inquiries, setInquiries] = useState(3000);
+  const [hourlyRate, setHourlyRate] = useState(25);
+
+  // Calculations
+  const hoursSavedPerMonth = Math.round(inquiries * 0.1 * 0.8);
+  const annualSavings = Math.round(hoursSavedPerMonth * hourlyRate * 12);
+
   const brands = [
     { icon: <Stethoscope size={18} />, name: "HealthTech Global" },
     { icon: <Building2 size={18} />, name: "Apex Real Estate" },
@@ -173,8 +181,104 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Interactive ROI Savings Calculator Section */}
+      <section className="section" style={{ background: '#ffffff' }}>
+        <div className="container">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '50px' }}
+          >
+            <div className="hero-badge" style={{ margin: '0 auto 16px auto' }}>
+              <Calculator size={14} color="var(--accent-primary)" />
+              <span>Interactive ROI Calculator</span>
+            </div>
+            <h2 className="section-title">Calculate Your <span className="gradient-text">AI Savings</span></h2>
+            <p className="section-subtitle">See how much time and money Azitics AI chatbots save your business every single year.</p>
+          </motion.div>
+
+          <div className="roi-calculator-card">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'center' }}>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontWeight: '700', fontSize: '1.05rem' }}>
+                    <span>Monthly Inquiries/Tickets:</span>
+                    <span style={{ color: 'var(--accent-primary)' }}>{inquiries.toLocaleString()} / mo</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    min="500" 
+                    max="30000" 
+                    step="500"
+                    value={inquiries} 
+                    onChange={(e) => setInquiries(Number(e.target.value))}
+                    className="roi-slider"
+                  />
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontWeight: '700', fontSize: '1.05rem' }}>
+                    <span>Support/Sales Agent Rate:</span>
+                    <span style={{ color: 'var(--accent-primary)' }}>${hourlyRate} / hr</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    min="15" 
+                    max="100" 
+                    step="5"
+                    value={hourlyRate} 
+                    onChange={(e) => setHourlyRate(Number(e.target.value))}
+                    className="roi-slider"
+                  />
+                </div>
+
+                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', background: 'var(--bg-secondary)', padding: '16px 20px', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  💡 *Based on automated 80% resolution rate for routine customer interactions.*
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div className="roi-stat-highlight">
+                  <div style={{ fontSize: '0.9rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)', marginBottom: '8px' }}>
+                    Estimated Annual Cost Savings
+                  </div>
+                  <div className="roi-val-large">
+                    ${annualSavings.toLocaleString()}
+                  </div>
+                  <div style={{ fontSize: '0.9rem', color: '#10b981', fontWeight: '700', marginTop: '8px' }}>
+                    💰 ~{Math.round((annualSavings / (inquiries * hourlyRate * 12 * 0.1)) * 100)}% ROI Increase
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                  <div style={{ background: 'var(--bg-secondary)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+                    <Clock size={24} color="var(--accent-primary)" style={{ marginBottom: '6px' }} />
+                    <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{hoursSavedPerMonth} hrs</div>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600' }}>Hours Saved / Mo</div>
+                  </div>
+
+                  <div style={{ background: 'var(--bg-secondary)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+                    <DollarSign size={24} color="#10b981" style={{ marginBottom: '6px' }} />
+                    <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>${Math.round(annualSavings / 12).toLocaleString()}</div>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600' }}>Monthly Savings</div>
+                  </div>
+                </div>
+
+                <Link to="/contact" className="btn btn-primary" style={{ width: '100%', padding: '16px' }}>
+                  Claim Your AI Savings Now <ArrowRight size={20} />
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
-      <section className="section" style={{ backgroundColor: '#ffffff' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -203,7 +307,7 @@ const Home = () => {
                   padding: '40px', 
                   borderRadius: '24px', 
                   border: '1px solid var(--border-color)',
-                  background: 'var(--bg-secondary)',
+                  background: '#ffffff',
                   position: 'relative'
                 }}
               >
