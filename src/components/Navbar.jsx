@@ -23,6 +23,7 @@ const Navbar = () => {
         <Link to="/services" className={`nav-link ${isActive('/services')}`}>Services</Link>
         <Link to="/portfolio" className={`nav-link ${isActive('/portfolio')}`}>Portfolio</Link>
         <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
+        <Link to="/pricing" className={`nav-link ${isActive('/pricing')}`}>Pricing</Link>
         <Link to="/contact" className="btn btn-primary" style={{ padding: '10px 24px' }}>Get Started</Link>
       </div>
 
@@ -43,6 +44,7 @@ const Navbar = () => {
             <Link to="/services" className={`mobile-nav-link ${isActive('/services')}`} onClick={closeMenu}>Services</Link>
             <Link to="/portfolio" className={`mobile-nav-link ${isActive('/portfolio')}`} onClick={closeMenu}>Portfolio</Link>
             <Link to="/about" className={`mobile-nav-link ${isActive('/about')}`} onClick={closeMenu}>About</Link>
+            <Link to="/pricing" className={`mobile-nav-link ${isActive('/pricing')}`} onClick={closeMenu}>Pricing</Link>
             <Link to="/contact" className="btn btn-primary" style={{ marginTop: '10px' }} onClick={closeMenu}>Get Started</Link>
           </motion.div>
         )}
