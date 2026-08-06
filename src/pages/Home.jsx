@@ -40,7 +40,7 @@ const Home = () => {
             >
               <div className="hero-badge">
                 <div className="hero-badge-dot"></div>
-                <Sparkles size={14} color="var(--accent-primary)" />
+                <Sparkles size={14} color="var(--accent-cyan)" />
                 <span>Next-Gen AI Platform v2.0</span>
               </div>
 
@@ -90,7 +90,7 @@ const Home = () => {
               </div>
 
               <div className="stat-pill-floating stat-pill-bottom-left">
-                <ShieldCheck size={16} color="var(--accent-primary)" />
+                <ShieldCheck size={16} color="var(--accent-cyan)" />
                 <span>Enterprise CRM Sync</span>
               </div>
 
@@ -106,7 +106,7 @@ const Home = () => {
 
                 <div className="hero-card-body">
                   <div className="hero-chat-msg bot">
-                    <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-primary)', display: 'block', marginBottom: '4px' }}>Azitics Agent</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-cyan)', display: 'block', marginBottom: '4px' }}>Azitics Agent</span>
                     Hi there! 👋 How can Azitics help automate your lead generation today?
                   </div>
 
@@ -115,7 +115,7 @@ const Home = () => {
                   </div>
 
                   <div className="hero-chat-msg bot">
-                    <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-primary)', display: 'block', marginBottom: '4px' }}>Azitics Agent</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-cyan)', display: 'block', marginBottom: '4px' }}>Azitics Agent</span>
                     Yes! We offer zero-code instant sync with HubSpot, Salesforce & WhatsApp, converting 3x more leads 24/7. 🚀
                   </div>
                 </div>
@@ -137,7 +137,7 @@ const Home = () => {
         <div className="trust-marquee-track">
           {[...brands, ...brands, ...brands].map((brand, idx) => (
             <div key={idx} className="trust-brand-pill">
-              <span style={{ color: 'var(--accent-primary)' }}>{brand.icon}</span>
+              <span style={{ color: 'var(--accent-cyan)' }}>{brand.icon}</span>
               <span>{brand.name}</span>
             </div>
           ))}
@@ -172,7 +172,7 @@ const Home = () => {
                 transition={{ duration: 0.6, delay: i * 0.2 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div style={{ color: 'var(--accent-primary)', marginBottom: '20px' }}>{feature.icon}</div>
+                <div style={{ color: 'var(--accent-cyan)', marginBottom: '20px' }}>{feature.icon}</div>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: '700', marginBottom: '15px' }}>{feature.title}</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>{feature.desc}</p>
               </motion.div>
@@ -182,7 +182,7 @@ const Home = () => {
       </section>
 
       {/* Interactive ROI Savings Calculator Section */}
-      <section className="section" style={{ background: '#ffffff' }}>
+      <section className="section" style={{ background: 'var(--bg-primary)' }}>
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -192,7 +192,7 @@ const Home = () => {
             style={{ textAlign: 'center', marginBottom: '50px' }}
           >
             <div className="hero-badge" style={{ margin: '0 auto 16px auto' }}>
-              <Calculator size={14} color="var(--accent-primary)" />
+              <Calculator size={14} color="var(--accent-cyan)" />
               <span>Interactive ROI Calculator</span>
             </div>
             <h2 className="section-title">Calculate Your <span className="gradient-text">AI Savings</span></h2>
@@ -206,7 +206,7 @@ const Home = () => {
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontWeight: '700', fontSize: '1.05rem' }}>
                     <span>Monthly Inquiries/Tickets:</span>
-                    <span style={{ color: 'var(--accent-primary)' }}>{inquiries.toLocaleString()} / mo</span>
+                    <span style={{ color: 'var(--accent-cyan)' }}>{inquiries.toLocaleString()} / mo</span>
                   </div>
                   <input 
                     type="range" 
@@ -222,7 +222,7 @@ const Home = () => {
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontWeight: '700', fontSize: '1.05rem' }}>
                     <span>Support/Sales Agent Rate:</span>
-                    <span style={{ color: 'var(--accent-primary)' }}>${hourlyRate} / hr</span>
+                    <span style={{ color: 'var(--accent-cyan)' }}>${hourlyRate} / hr</span>
                   </div>
                   <input 
                     type="range" 
@@ -255,7 +255,7 @@ const Home = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                   <div style={{ background: 'var(--bg-secondary)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                    <Clock size={24} color="var(--accent-primary)" style={{ marginBottom: '6px' }} />
+                    <Clock size={24} color="var(--accent-cyan)" style={{ marginBottom: '6px' }} />
                     <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{hoursSavedPerMonth} hrs</div>
                     <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600' }}>Hours Saved / Mo</div>
                   </div>
@@ -303,15 +303,13 @@ const Home = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.2 }}
+                className="glass-card"
                 style={{ 
                   padding: '40px', 
-                  borderRadius: '24px', 
-                  border: '1px solid var(--border-color)',
-                  background: '#ffffff',
                   position: 'relative'
                 }}
               >
-                <div style={{ fontSize: '3rem', fontWeight: '800', color: 'rgba(37, 99, 235, 0.1)', position: 'absolute', top: '20px', right: '30px' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '800', color: 'rgba(59, 130, 246, 0.15)', position: 'absolute', top: '20px', right: '30px' }}>
                   {item.step}
                 </div>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '15px', position: 'relative', zIndex: 1 }}>{item.title}</h3>
