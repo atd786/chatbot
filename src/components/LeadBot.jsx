@@ -9,11 +9,16 @@ const LeadBot = () => {
   const [input, setInput] = useState('');
   const [step, setStep] = useState(0); // 0:Name, 1:Email, 2:Company, 3:Message
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
-  const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
@@ -126,7 +131,9 @@ const LeadBot = () => {
       </div>
 
       {/* Chat Messages */}
-      <div style={{
+      <div 
+        ref={chatContainerRef}
+        style={{
         flex: 1,
         padding: '20px',
         overflowY: 'auto',
@@ -179,7 +186,6 @@ const LeadBot = () => {
             </motion.div>
           ))}
         </AnimatePresence>
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Chat Input */}
@@ -208,6 +214,7 @@ const LeadBot = () => {
         />
         <button 
           type="submit" 
+          aria-label="Send message"
           disabled={!input.trim() || step >= 4 || isSubmitting}
           style={{
             width: '48px',

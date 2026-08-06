@@ -12,21 +12,21 @@ const Home = () => {
     >
       <section className="section" style={{ paddingTop: '80px', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
         <div className="container perspective-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+          <div className="hero-grid">
             
             <motion.div
               initial={{ opacity: 0, x: -50, rotateY: -15 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 style={{ fontSize: '4.5rem', fontWeight: '800', lineHeight: 1.1, marginBottom: '24px', letterSpacing: '-1.5px' }}>
+              <h1 className="hero-title-responsive" style={{ fontSize: '4.5rem', fontWeight: '800', lineHeight: 1.1, marginBottom: '24px', letterSpacing: '-1.5px' }}>
                 Next-Gen AI <br/>
                 <span className="gradient-text">Automation</span>
               </h1>
               <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '40px', maxWidth: '500px' }}>
                 Transform your customer experience with intelligent conversational agents. We build bots that acquire clients, drive sales, and operate globally 24/7.
               </p>
-              <div style={{ display: 'flex', gap: '20px' }}>
+              <div className="hero-buttons">
                 <Link to="/contact" className="btn btn-primary">
                   Start Project <ArrowRight size={20} />
                 </Link>
@@ -108,7 +108,7 @@ const Home = () => {
             <p className="section-subtitle">A seamless process from deployment to optimization.</p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '30px' }}>
+          <div className="steps-grid">
             {[
               { step: "01", title: "Integration", desc: "We connect our AI models directly to your CRM and website via secure APIs." },
               { step: "02", title: "Custom Training", desc: "The bot ingests your company's FAQs, products, and support history." },
