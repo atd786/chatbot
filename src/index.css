@@ -566,3 +566,123 @@ textarea.form-input {
 .project-link:hover {
   color: var(--accent-primary);
 }
+
+/* Case Study Page Styles */
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.case-study-content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.story-block h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.story-block p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.story-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.results-card {
+  padding: 40px;
+  position: sticky;
+  top: 120px;
+}
+
+.results-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.primary-metric {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.results-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.case-study-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .case-study-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.next-project, .cta-box {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.cta-box {
+  background: var(--bg-secondary);
+}
+
+.footer-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 15px;
+}
+
+.next-project h3, .cta-box h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}

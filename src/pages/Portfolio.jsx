@@ -2,154 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { projects } from '../data/projects';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const categories = ['All', 'Retail', 'Finance', 'Healthcare', 'Real Estate', 'SaaS', 'Logistics'];
-
-  const projects = [
-    {
-      title: "Global E-Commerce Assistant",
-      category: "Retail",
-      description: "A multilingual chatbot deployed across 15 countries that handles product recommendations and order tracking.",
-      metric: "45% Ticket Reduction",
-      color: "#2563eb"
-    },
-    {
-      title: "FinTech Lead Qualifier",
-      category: "Finance",
-      description: "An intelligent bot integrated with Salesforce that pre-qualifies mortgage leads and books appointments.",
-      metric: "300% More Qualified Leads",
-      color: "#059669"
-    },
-    {
-      title: "Healthcare Triage Bot",
-      category: "Healthcare",
-      description: "A HIPAA-compliant assistant that securely triages patient symptoms and routes urgent cases.",
-      metric: "2M+ Patients Served",
-      color: "#7c3aed"
-    },
-    {
-      title: "Property Matchmaker AI",
-      category: "Real Estate",
-      description: "A virtual real estate agent that asks buyers about their preferences and instantly shows matching MLS listings.",
-      metric: "1.5x Conversion Rate",
-      color: "#f59e0b"
-    },
-    {
-      title: "SaaS Onboarding Guide",
-      category: "SaaS",
-      description: "An in-app AI assistant that walks new users through software setup, significantly reducing time-to-value.",
-      metric: "60% Less Churn",
-      color: "#ec4899"
-    },
-    {
-      title: "Logistics Tracking Bot",
-      category: "Logistics",
-      description: "WhatsApp bot for a global shipping company allowing users to track freight via natural language queries.",
-      metric: "10M+ Queries Handled",
-      color: "#14b8a6"
-    },
-    {
-      title: "Retail Inventory Guru",
-      category: "Retail",
-      description: "Internal team bot that allows store managers to check stock levels across nationwide warehouses instantly.",
-      metric: "2 Hrs Saved per Manager/Day",
-      color: "#2563eb"
-    },
-    {
-      title: "Crypto Support Agent",
-      category: "Finance",
-      description: "24/7 support bot for a crypto exchange handling account lockouts, KYC queries, and basic trading FAQs.",
-      metric: "99.9% Uptime",
-      color: "#059669"
-    },
-    {
-      title: "Dental Clinic Scheduler",
-      category: "Healthcare",
-      description: "Voice and text bot that handles rescheduling, cancellations, and sends automated reminders to patients.",
-      metric: "80% No-Show Reduction",
-      color: "#7c3aed"
-    },
-    {
-      title: "Luxury Condo Concierge",
-      category: "Real Estate",
-      description: "Resident-facing app bot for booking amenities, reporting maintenance, and local community updates.",
-      metric: "5-Star Resident Rating",
-      color: "#f59e0b"
-    },
-    {
-      title: "B2B Software Sales Rep",
-      category: "SaaS",
-      description: "Proactive website bot that engages enterprise visitors, answers pricing questions, and collects emails.",
-      metric: "$2.5M Pipeline Generated",
-      color: "#ec4899"
-    },
-    {
-      title: "Fleet Dispatch Optimizer",
-      category: "Logistics",
-      description: "AI interface for dispatchers to route trucks based on real-time traffic and weather data.",
-      metric: "15% Fuel Savings",
-      color: "#14b8a6"
-    },
-    {
-      title: "Fashion Stylist Bot",
-      category: "Retail",
-      description: "Instagram DM bot that recommends outfits based on user uploaded photos and past purchase history.",
-      metric: "22% Upsell Rate",
-      color: "#2563eb"
-    },
-    {
-      title: "Tax Prep Assistant",
-      category: "Finance",
-      description: "Guides freelance workers through deductible categorization before handing off to a human CPA.",
-      metric: "4,000+ Tax Returns Prep'd",
-      color: "#059669"
-    },
-    {
-      title: "Mental Health Check-in",
-      category: "Healthcare",
-      description: "A companion bot that asks daily wellness questions and flags severe responses to human therapists.",
-      metric: "10,000+ Daily Users",
-      color: "#7c3aed"
-    },
-    {
-      title: "Commercial Lease Analyzer",
-      category: "Real Estate",
-      description: "Internal tool that extracts key dates and clauses from PDF lease agreements and updates the CRM.",
-      metric: "90% Faster Document Review",
-      color: "#f59e0b"
-    },
-    {
-      title: "API Documentation Bot",
-      category: "SaaS",
-      description: "Developer-focused bot trained on extensive API docs to provide instant code snippets and troubleshooting.",
-      metric: "Zero Support Tickets for API",
-      color: "#ec4899"
-    },
-    {
-      title: "Last-Mile Delivery Support",
-      category: "Logistics",
-      description: "SMS bot that updates customers on delivery windows and allows them to leave drop-off instructions.",
-      metric: "98% Positive Feedback",
-      color: "#14b8a6"
-    },
-    {
-      title: "Grocer Refund Automator",
-      category: "Retail",
-      description: "Automatically issues micro-refunds for damaged grocery items based on image recognition.",
-      metric: "$50k Saved in Agent Hours",
-      color: "#2563eb"
-    },
-    {
-      title: "Insurance Claim Filer",
-      category: "Finance",
-      description: "Walks users through filing a first-notice-of-loss auto claim using their smartphone camera.",
-      metric: "Claim Filed in < 3 Mins",
-      color: "#059669"
-    }
-  ];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
@@ -212,7 +70,7 @@ const Portfolio = () => {
                       <span>{project.metric}</span>
                     </div>
 
-                    <Link to="/contact" className="project-link">
+                    <Link to={`/portfolio/${project.slug}`} className="project-link">
                       View Case Study <ArrowRight size={14} />
                     </Link>
                   </div>
