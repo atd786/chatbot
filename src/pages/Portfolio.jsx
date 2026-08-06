@@ -1,31 +1,159 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const categories = ['All', 'Retail', 'Finance', 'Healthcare', 'Real Estate', 'SaaS', 'Logistics'];
+
   const projects = [
     {
       title: "Global E-Commerce Assistant",
-      category: "Retail Automation",
-      description: "A multilingual chatbot deployed across 15 countries that handles product recommendations, order tracking, and returns processing, reducing support tickets by 45%.",
-      metrics: ["45% Ticket Reduction", "24/7 Multilingual Support", "$1.2M Saved Annually"],
+      category: "Retail",
+      description: "A multilingual chatbot deployed across 15 countries that handles product recommendations and order tracking.",
+      metric: "45% Ticket Reduction",
       color: "#2563eb"
     },
     {
       title: "FinTech Lead Qualifier",
-      category: "Financial Services",
-      description: "An intelligent bot integrated with Salesforce that pre-qualifies mortgage leads and automatically books appointments with regional advisors based on user location.",
-      metrics: ["300% Increase in Qualified Leads", "Zero Wait Time", "Seamless CRM Sync"],
+      category: "Finance",
+      description: "An intelligent bot integrated with Salesforce that pre-qualifies mortgage leads and books appointments.",
+      metric: "300% More Qualified Leads",
       color: "#059669"
     },
     {
       title: "Healthcare Triage Bot",
       category: "Healthcare",
-      description: "A HIPAA-compliant assistant that securely triages patient symptoms, provides basic medical information, and routes urgent cases to on-call nurses.",
-      metrics: ["2M+ Patients Served", "99.9% Uptime", "HIPAA Compliant"],
+      description: "A HIPAA-compliant assistant that securely triages patient symptoms and routes urgent cases.",
+      metric: "2M+ Patients Served",
       color: "#7c3aed"
+    },
+    {
+      title: "Property Matchmaker AI",
+      category: "Real Estate",
+      description: "A virtual real estate agent that asks buyers about their preferences and instantly shows matching MLS listings.",
+      metric: "1.5x Conversion Rate",
+      color: "#f59e0b"
+    },
+    {
+      title: "SaaS Onboarding Guide",
+      category: "SaaS",
+      description: "An in-app AI assistant that walks new users through software setup, significantly reducing time-to-value.",
+      metric: "60% Less Churn",
+      color: "#ec4899"
+    },
+    {
+      title: "Logistics Tracking Bot",
+      category: "Logistics",
+      description: "WhatsApp bot for a global shipping company allowing users to track freight via natural language queries.",
+      metric: "10M+ Queries Handled",
+      color: "#14b8a6"
+    },
+    {
+      title: "Retail Inventory Guru",
+      category: "Retail",
+      description: "Internal team bot that allows store managers to check stock levels across nationwide warehouses instantly.",
+      metric: "2 Hrs Saved per Manager/Day",
+      color: "#2563eb"
+    },
+    {
+      title: "Crypto Support Agent",
+      category: "Finance",
+      description: "24/7 support bot for a crypto exchange handling account lockouts, KYC queries, and basic trading FAQs.",
+      metric: "99.9% Uptime",
+      color: "#059669"
+    },
+    {
+      title: "Dental Clinic Scheduler",
+      category: "Healthcare",
+      description: "Voice and text bot that handles rescheduling, cancellations, and sends automated reminders to patients.",
+      metric: "80% No-Show Reduction",
+      color: "#7c3aed"
+    },
+    {
+      title: "Luxury Condo Concierge",
+      category: "Real Estate",
+      description: "Resident-facing app bot for booking amenities, reporting maintenance, and local community updates.",
+      metric: "5-Star Resident Rating",
+      color: "#f59e0b"
+    },
+    {
+      title: "B2B Software Sales Rep",
+      category: "SaaS",
+      description: "Proactive website bot that engages enterprise visitors, answers pricing questions, and collects emails.",
+      metric: "$2.5M Pipeline Generated",
+      color: "#ec4899"
+    },
+    {
+      title: "Fleet Dispatch Optimizer",
+      category: "Logistics",
+      description: "AI interface for dispatchers to route trucks based on real-time traffic and weather data.",
+      metric: "15% Fuel Savings",
+      color: "#14b8a6"
+    },
+    {
+      title: "Fashion Stylist Bot",
+      category: "Retail",
+      description: "Instagram DM bot that recommends outfits based on user uploaded photos and past purchase history.",
+      metric: "22% Upsell Rate",
+      color: "#2563eb"
+    },
+    {
+      title: "Tax Prep Assistant",
+      category: "Finance",
+      description: "Guides freelance workers through deductible categorization before handing off to a human CPA.",
+      metric: "4,000+ Tax Returns Prep'd",
+      color: "#059669"
+    },
+    {
+      title: "Mental Health Check-in",
+      category: "Healthcare",
+      description: "A companion bot that asks daily wellness questions and flags severe responses to human therapists.",
+      metric: "10,000+ Daily Users",
+      color: "#7c3aed"
+    },
+    {
+      title: "Commercial Lease Analyzer",
+      category: "Real Estate",
+      description: "Internal tool that extracts key dates and clauses from PDF lease agreements and updates the CRM.",
+      metric: "90% Faster Document Review",
+      color: "#f59e0b"
+    },
+    {
+      title: "API Documentation Bot",
+      category: "SaaS",
+      description: "Developer-focused bot trained on extensive API docs to provide instant code snippets and troubleshooting.",
+      metric: "Zero Support Tickets for API",
+      color: "#ec4899"
+    },
+    {
+      title: "Last-Mile Delivery Support",
+      category: "Logistics",
+      description: "SMS bot that updates customers on delivery windows and allows them to leave drop-off instructions.",
+      metric: "98% Positive Feedback",
+      color: "#14b8a6"
+    },
+    {
+      title: "Grocer Refund Automator",
+      category: "Retail",
+      description: "Automatically issues micro-refunds for damaged grocery items based on image recognition.",
+      metric: "$50k Saved in Agent Hours",
+      color: "#2563eb"
+    },
+    {
+      title: "Insurance Claim Filer",
+      category: "Finance",
+      description: "Walks users through filing a first-notice-of-loss auto claim using their smartphone camera.",
+      metric: "Claim Filed in < 3 Mins",
+      color: "#059669"
     }
   ];
+
+  const filteredProjects = activeFilter === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
 
   return (
     <motion.div 
@@ -40,70 +168,59 @@ const Portfolio = () => {
             initial={{ y: 30, opacity: 0 }} 
             animate={{ y: 0, opacity: 1 }} 
             transition={{ duration: 0.6 }}
-            style={{ textAlign: 'center', marginBottom: '60px' }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
           >
             <h1 className="section-title">Our <span className="gradient-text">Portfolio</span></h1>
             <p className="section-subtitle">Real-world AI automation success stories from our global enterprise clients.</p>
           </motion.div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-            {projects.map((project, i) => (
-              <motion.div 
+          {/* Filter Bar */}
+          <div className="filter-bar">
+            {categories.map((cat, i) => (
+              <button 
                 key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, type: "spring", bounce: 0.2 }}
-                className="glass-card"
-                style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-                  gap: '40px', 
-                  alignItems: 'center',
-                  padding: '50px',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
+                onClick={() => setActiveFilter(cat)}
+                className={`filter-btn ${activeFilter === cat ? 'active' : ''}`}
               >
-                <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', backgroundColor: project.color }}></div>
-                
-                <div>
-                  <div style={{ color: project.color, fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
-                    {project.category}
-                  </div>
-                  <h3 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '20px', lineHeight: '1.2' }}>{project.title}</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>
-                    {project.description}
-                  </p>
-                  <Link to="/contact" className="btn btn-secondary" style={{ padding: '10px 24px' }}>
-                    Request Case Study <ArrowRight size={16} style={{ marginLeft: '5px' }} />
-                  </Link>
-                </div>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                  {project.metrics.map((metric, j) => (
-                    <motion.div 
-                      key={j}
-                      whileHover={{ scale: 1.05, x: 10 }}
-                      style={{ 
-                        background: 'var(--bg-secondary)', 
-                        padding: '20px', 
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '15px',
-                        fontWeight: '600',
-                        border: '1px solid var(--border-color)'
-                      }}
-                    >
-                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: project.color }}></div>
-                      {metric}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+                {cat}
+              </button>
             ))}
           </div>
+
+          {/* Portfolio Grid */}
+          <motion.div layout className="portfolio-grid">
+            <AnimatePresence>
+              {filteredProjects.map((project, i) => (
+                <motion.div 
+                  layout
+                  key={project.title}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="glass-card compact-project-card"
+                  whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="project-color-bar" style={{ backgroundColor: project.color }}></div>
+                  <div className="project-content">
+                    <span className="project-category" style={{ color: project.color }}>{project.category}</span>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-desc">{project.description}</p>
+                    
+                    <div className="project-metric">
+                      <div className="metric-dot" style={{ backgroundColor: project.color }}></div>
+                      <span>{project.metric}</span>
+                    </div>
+
+                    <Link to="/contact" className="project-link">
+                      View Case Study <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
         </div>
       </section>
 
