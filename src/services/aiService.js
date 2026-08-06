@@ -39,7 +39,7 @@ export const sendMessageToGroq = async (chatHistory) => {
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192', // Extremely fast and good enough for sales chat
+        model: 'llama-3.1-8b-instant', // Upgraded to the new Llama 3.1 model
         messages: messages,
         temperature: 0.7,
         max_tokens: 250,
